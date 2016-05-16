@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="EnvironmentModule" ng-controller = "EnvironmentController" ng-cloak>
+  <head>
+    <title>WPT : {{title}}</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/dataTables.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <!--STYLES END-->
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/jquery-1.12.3.min.js"></script>
+    <script src="/js/dependencies/bootstrap.js"></script>
+    <script src="/js/dependencies/angular.min.js"></script>
+    <script src="/js/dependencies/dataTables.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/public/environment/EnvironmentModule.js"></script>
+    <script src="/js/public/environment/EnvironmentController.js"></script>
+    <!--SCRIPTS END-->
+    <script type="text/javascript">
+    //window.SAILS_LOCALS = { _csrf: "<%= _csrf %>" };
+    </script>
+  </head>
+<body>
+<fieldset>
+<legend><h1>Create Environment</h1></legend>
+ <div class="container-fluid">
+    <form ng-submit="submitEnvironmentForm()"  id="create-environment-form" name="createEnvironment">
+    
+        <!-- N A M E -->
+
+
+        <div class="control-group form-group col-md-12" ng-class="{'has-error':createEnvironment.name.$invalid && createEnvironment.name.$dirty}">
+          <label>Name</label>
+
+          <!-- For this input field make it required, and have a max length of 25 -->
+          <input type="text" class="form-control" placeholder="e.g. Production" name="name" ng-model="createEnvironmentForm.name" ng-maxlength="50" required>
+
+
+          <span class="help-block has-error" ng-if="createEnvironment.name.$dirty">
+            <span ng-show="createEnvironment.name.$error.required">Name is required.</span>
+            <span ng-show="createEnvironment.name.$error.maxlength">The name cannot be more than 50 characters.</span>
+          </span>
+        </div>
+
+        <!-- Disable signup button until the form has no errors -->
+      <button class="btn btn-primary btn-lg btn-block" type="submit" ng-disabled="createEnvironment.$invalid">
+        <span ng-hide="createEnvironmentForm.loading">Create Environment</span>
+        <span class="overlord-loading-spinner fa fa-spinner" ng-show="createEnvironmentForm.loading" ></span>
+        <span ng-show="createEnvironmentForm.loading">Preparing your new environment...</span>
+      </button>
+
+      <!--<input type="hidden" name="_csrf" value="<%= _csrf %>" />-->
+
+    </form>
+ </div>
+ </fieldset> 
+
+</body>
+</html>
