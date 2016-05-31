@@ -2,8 +2,13 @@ angular.module('EnvironmentModule').controller('EnvironmentController', ['$scope
 	//all loading states of the forms
 	$scope.title = "Environment";
 	$scope.environments = "";
+	$scope.environment = "";
 
 	$scope.createEnvironmentForm = {
+		loading: false
+	},
+
+	$scope.editEnvironmentForm = {
 		loading: false
 	},
 
@@ -17,7 +22,7 @@ angular.module('EnvironmentModule').controller('EnvironmentController', ['$scope
 
 	$scope.submitEnvironmentForm = function(){
 		$scope.createEnvironmentForm.loading = true;
-		console.log("Clicked");
+		//console.log("Clicked");
 		$http.post('/environment',{
 			name: $scope.createEnvironmentForm.name
 		}).then(function onSuccess(){
@@ -41,6 +46,22 @@ angular.module('EnvironmentModule').controller('EnvironmentController', ['$scope
 			//$scope.createEnvironmentForm.loading = false;
 		});
 
+	},
+
+	$scope.getEnvironment = function(envId){
+		
+		$http.get('/environment/'+envId,{
+		}).then(function onSuccess(dataObject){
+			$scope.environment = dataObject.data;
+			$scope.editEnvironmentForm.name = dataObject.data.name;
+			//window.location = '/environment/edit'		
+		}).catch(function onError(sailsResponse){
+			console.log(sailsResponse);
+		}).finally(function eitherWay(){
+			
+		});
+
 	}
 
 }]);
+

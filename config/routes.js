@@ -48,7 +48,8 @@ module.exports.routes = {
   ***************************************************************************/
   ///All environment routes related to views
   'GET /environments': {view: 'environment/index'},
-  'GET /environment/new': {view: 'environment/new'}
+  'GET /environment/new': {view: 'environment/new'},
+  'GET /environment/edit': {view: 'environment/edit'}
   
 
 };
