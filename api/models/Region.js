@@ -12,6 +12,11 @@ module.exports = {
             type: "string",
             required: true,
             unique: true
+        },
+        // Add a reference to Locations
+        locations: {
+            collection: 'location',
+            via: 'location_region'
         }
     }
 };
