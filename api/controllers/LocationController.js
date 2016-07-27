@@ -7,7 +7,7 @@
 
 module.exports = {
 	searchLocation: function (req, res) {
-    var locations = LocationService.searchLocation(function(locations){
+    var locations = LocationService.searchLocation(req.query.field, req.query.q, function(locations){
             res.json(locations);    
     });
   }
