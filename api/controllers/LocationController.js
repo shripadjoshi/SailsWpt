@@ -6,6 +6,9 @@
  */
 
 module.exports = {
-	
+	searchLocation: function (req, res) {
+    var locations = LocationService.searchLocation(function(locations){
+            res.json(locations);    
+    });
+  }
 };
-
