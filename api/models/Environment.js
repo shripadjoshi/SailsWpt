@@ -7,12 +7,16 @@
 
 module.exports = {
 
-  attributes: {
-  	name:{
-  		type: "string",
-  		required: true,
-  		unique: true
-  	}
-  }
+    attributes: {
+        name: {
+            type: "string",
+            required: true,
+            unique: true
+        },
+        // Add a reference to URL
+        urls: {
+            collection: 'url',
+            via: 'environment'
+        }
+    }
 };
-

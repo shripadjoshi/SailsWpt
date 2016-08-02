@@ -15,6 +15,12 @@ module.exports = {
         },
         description: {
             type: "text"
+        },
+        // Add a reference to URL
+        urls: {
+            collection: 'url',
+            via: 'property'
         }
+        
     }
 };

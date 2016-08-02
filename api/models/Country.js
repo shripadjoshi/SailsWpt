@@ -12,6 +12,11 @@ module.exports = {
             type: "string",
             required: true,
             unique: true
+        },
+        // Add a reference to URL
+        urls: {
+            collection: 'url',
+            via: 'country'
         }
     }
 };
